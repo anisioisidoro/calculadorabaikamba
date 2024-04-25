@@ -1,11 +1,11 @@
 {
-    "name": "login",
-    "short_name": "login",
+    "name": "Calculadora-BAI KAMBA",
+    "short_name": "Calculadora-BAI KAMBA",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Aplicação para calcular os descontos do cartão kamba",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
