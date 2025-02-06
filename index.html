@@ -89,16 +89,30 @@
   <script src="flutter.js" defer></script>
 
   <script>
-    // Função para obter parâmetros da URL
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
   
-    // Se o parâmetro "app_redirect" estiver na URL e for um usuário de Android, redireciona para a Play Store
-    if (getQueryParam("app_redirect") === "true" && navigator.userAgent.match(/Android/i)) {
-      window.location.href = "https://play.google.com/store/apps/details?id=ao.digitalfactory.nossasegurosapp";
+    const appRedirect = getQueryParam("app_redirect");
+    const productId = getQueryParam("product_id");
+  
+    // Verifica se o usuário veio de um deep link e está no Android
+    if (appRedirect === "true" && navigator.userAgent.match(/Android/i)) {
+      const appPackage = "ao.digitalfactory.nossasegurosapp";
+      const intentUrl = "intent://calculadorabaikamba.onrender.com/produto?product_id=" + productId +
+                        "#Intent;scheme=https;package=" + appPackage + ";end;";
+  
+      // Tenta abrir o app
+      window.location.href = intentUrl;
+  
+      // Se o app não estiver instalado, após 2 segundos, redireciona para a Play Store
+      setTimeout(() => {
+        window.location.href = "https://play.google.com/store/apps/details?id=" + appPackage;
+      }, 2000);
     }
+  
+    // Se o usuário acessou diretamente o site, apenas mostra o conteúdo normalmente
   </script>
 </head>
 <body>
