@@ -87,6 +87,19 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+
+  <script>
+    // Função para obter parâmetros da URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+  
+    // Se o parâmetro "app_redirect" estiver na URL e for um usuário de Android, redireciona para a Play Store
+    if (getQueryParam("app_redirect") === "true" && navigator.userAgent.match(/Android/i)) {
+      window.location.href = "https://play.google.com/store/apps/details?id=ao.digitalfactory.nossasegurosapp";
+    }
+  </script>
 </head>
 <body>
   <div class="loading">
@@ -106,5 +119,7 @@
       });
     });
   </script>
+
+  
 </body>
 </html>
