@@ -95,13 +95,11 @@
     }
   
     const appRedirect = getQueryParam("app_redirect");
-    const productId = getQueryParam("product_id");
   
     // Verifica se o usuário veio de um deep link e está no Android
     if (appRedirect === "true" && navigator.userAgent.match(/Android/i)) {
       const appPackage = "ao.digitalfactory.nossasegurosapp";
-      const intentUrl = "intent://calculadorabaikamba.onrender.com/produto?product_id=" + productId +
-                        "#Intent;scheme=https;package=" + appPackage + ";end;";
+      const intentUrl = "intent://calculadorabaikamba.onrender.com/#Intent;scheme=https;package=" + appPackage + ";end;";
   
       // Tenta abrir o app
       window.location.href = intentUrl;
@@ -112,7 +110,7 @@
       }, 2000);
     }
   
-    // Se o usuário acessou diretamente o site, apenas mostra o conteúdo normalmente
+    // Se o usuário acessou diretamente o site, ele continua navegando normalmente
   </script>
 </head>
 <body>
