@@ -1,0 +1,9 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ao.digitalfactory.nossasegurosapp",
+      "sha256_cert_fingerprints":
+      ["1E:AD:77:5F:1F:EA:01:51:16:F2:34:B7:F5:2E:A2:1B:D4:EF:6F:18:A9:49:47:13:46:A1:A9:CB:8E:CB:7B:43"]
+    }
+  }]
