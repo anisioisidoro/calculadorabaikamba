@@ -89,17 +89,20 @@
   <script src="flutter.js" defer></script>
 
   <script>
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
+    function getQueryParams() {
+      return window.location.search; // Retorna toda a query string, incluindo ?
     }
   
-    const appRedirect = getQueryParam("app_redirect");
+    const appRedirect = new URLSearchParams(window.location.search).get("app_redirect");
   
     // Verifica se o usuário veio de um deep link e está no Android
     if (appRedirect === "true" && navigator.userAgent.match(/Android/i)) {
       const appPackage = "ao.digitalfactory.nossasegurosapp";
-      const intentUrl = "intent://calculadorabaikamba.onrender.com/#Intent;scheme=https;package=" + appPackage + ";end;";
+      const queryString = getQueryParams(); // Pega todos os parâmetros da URL
+  
+      // Cria a intent com os parâmetros dinâmicos
+      const intentUrl = "intent://calculadorabaikamba.onrender.com/" + queryString +
+                        "#Intent;scheme=https;package=" + appPackage + ";end;";
   
       // Tenta abrir o app
       window.location.href = intentUrl;
